@@ -1,12 +1,16 @@
 import React, {useState, useEffect} from 'react';
+import NavBar from './Navbar'
+import SearchArea from './SearchArea'
 import EmployeeTable from './EmployeeTable'
 import {getUsers} from "../utils/API"
 
 
-function CardContainer() {
+function Index() {
 
     const [employee, setEmployee] = useState([])
     const [sortConfigs, setsortConfigs] = useState({})
+    const [search, setSearch] = useState(null)
+
 
     useEffect(() => {
         getUsers().then( resp => {
@@ -26,6 +30,10 @@ function CardContainer() {
         })
         
     }, [])
+
+    const searchUpdate  = (e) => {
+        setSearch(e.target.value)
+    }
 
 
 
@@ -53,9 +61,13 @@ function CardContainer() {
 
     return (
         <>
-        <div style={cardContainerStyles}>
-           <EmployeeTable employee={employee} sortRequest={sortRequest}/>
-        </div>
+            <div className ="container">
+            <div><NavBar/></div>
+            <div><SearchArea search={search} searchUpdate={searchUpdate}/></div>
+            <div style={cardContainerStyles}>
+            <EmployeeTable employee={employee} sortRequest={sortRequest}/>
+            </div>
+            </div>
         </>
     )
 }
@@ -66,4 +78,4 @@ const cardContainerStyles = {
     textAlign: "center",
     padding: "10px"
 }
-export default CardContainer;
+export default Index;

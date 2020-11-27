@@ -1,12 +1,6 @@
 import React, {useState} from 'react';
 
-function SearchArea() {
-
-    const [search, setSearch] = useState({value:"statename"})
-
-    const searchUpdate  = (e) => {
-        setSearch(e.target.value)
-    }
+function SearchArea({search, searchUpdate}) {
 
     return (
         <>
