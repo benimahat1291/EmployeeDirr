@@ -1,28 +1,29 @@
 import React from 'react';
 
-function EmployeeTable() {
+function EmployeeTable({employee, sortRequest}) {
+
     return (
         <>
             <table >
                 <thead>
                     <tr>
-                        <th>Image</th>
-                        <th>Name</th>
+                        <th>Images</th>
+                        <th><button type="button" onClick={() => sortRequest('name')}>Name</button></th>
                         <th>Email</th>
-                        <th>Phone#</th>
-                        <th>DOB</th>
+                        <th>phoneNumber</th>
+                        <th><button type="button" onClick={() => sortRequest('age')}>Age</button></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        <tr>
-                            <td>pic</td>
-                            <td>bob</td>
-                            <td>bobsaget@gmail.com</td>
-                            <td>303-324-3234</td>
-                            <td>1-23-1989</td>
+                    {employee.map( e => (
+                        <tr key={e.email}>
+                            <td><img src={e.image} alt="pic"/></td>
+                            <td>{e.name}</td>
+                            <td>{e.email}</td>
+                            <td>{e.phone}</td>
+                            <td>{e.age}</td>
                         </tr>
-                    }
+                    ))}
 
                 </tbody>
             </table>
@@ -30,8 +31,5 @@ function EmployeeTable() {
     )
 }
 
-const headerStyle = {
-    
-}
 
 export default EmployeeTable;
