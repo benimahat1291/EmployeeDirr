@@ -6,7 +6,7 @@ import {getUsers} from "../utils/API"
 function CardContainer() {
 
     const [employee, setEmployee] = useState([])
-    const [sortedField, setSortedField] = useState(null)
+    const [sortConfigs, setsortConfigs] = useState({})
 
     useEffect(() => {
         getUsers().then( resp => {
@@ -28,51 +28,28 @@ function CardContainer() {
     }, [])
 
 
+
     const sortRequest = key => {
         let direction = 'asc'
-        if (sortedField.key === key && sortedField.direction === 'asc') {
+        if (sortConfigs.key === key && sortConfigs.direction === 'asc') {
             direction = 'dsc'
         }
-        setSortedField({key, direction})
+        
+        setsortConfigs({key, direction})
     }
 
-    let sortedData = [...employee]
-    if(sortedField !== null) {
-        sortedData.sort((a,b) => {
-            if (a[sortedField.key] < b[sortedField.key]){
-                return sortedField.direction === 'asc' ? -1 : 1;
+    if(sortConfigs !== {}) {
+        employee.sort((a,b) => {
+            if (a[sortConfigs.key] < b[sortConfigs.key]){
+                return sortConfigs.direction === 'asc' ? -1 : 1;
             }
-            if (a[sortedField.direction] > b[sortedField.direction]){
-                return sortedField.direction === 'asc' ? 1 : 1;
+            if (a[sortConfigs.key] > b[sortConfigs.key]){
+                return sortConfigs.direction === 'asc' ? 1 : -1;
             }
             return 0;
         })
     }
-    console.log(employee)
-
-    
-
-
-//   let sortedEmployee = employee.sort((a,b) => {
-//       return a.age - b.age;
-//   })
-
-//   sortedEmployee.forEach((e) => {
-//       console.log(`${e.name} ${e.age}`)
-//   })
-
-    // const sortName = () => {
-    //     const sortedField = []
-    //     return console.log("nameField")
-    // }
-
-    // const sortAge = () => {
-    //     const sortedField = []
-    //     return console.log("ageField")
-    // }
-
-
-
+   
 
     return (
         <>
