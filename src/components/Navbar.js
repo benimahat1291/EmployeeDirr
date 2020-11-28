@@ -10,10 +10,12 @@ function NavBar() {
 
 //Nav Styles
 const navStyle = {
-    background: "#333",
+    background: "#222222",
     color: "#fff",
     textAlign: "center",
-    padding: "10px"
+    padding: "30px",
+    fontSize: "50px"
+    
 }
 
 export default NavBar;

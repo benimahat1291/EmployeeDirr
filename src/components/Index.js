@@ -9,7 +9,9 @@ function Index() {
 
     const [employee, setEmployee] = useState([])
     const [sortConfigs, setsortConfigs] = useState({})
-    const [search, setSearch] = useState(null)
+    const [search, setSearch] = useState("")
+
+
 
 
     useEffect(() => {
@@ -26,15 +28,15 @@ function Index() {
                 employeeDataArry.push(employeeData)
                 return employeeDataArry
             })
-            return setEmployee(employeeDataArry)
+
+            setEmployee(employeeDataArry);
         })
         
     }, [])
 
-    const searchUpdate  = (e) => {
-        setSearch(e.target.value)
+    function searchFilter(data){
+        return data.filter((emp) => emp.name.toLowerCase().indexOf(search) !== -1)
     }
-
 
 
     const sortRequest = key => {
@@ -63,9 +65,9 @@ function Index() {
         <>
             <div className ="container">
             <div><NavBar/></div>
-            <div><SearchArea search={search} searchUpdate={searchUpdate}/></div>
+            <div><SearchArea search={search} setSearch={setSearch}/></div>
             <div style={cardContainerStyles}>
-            <EmployeeTable employee={employee} sortRequest={sortRequest}/>
+            <EmployeeTable employee={searchFilter(employee)} sortRequest={sortRequest}/>
             </div>
             </div>
         </>
@@ -78,4 +80,6 @@ const cardContainerStyles = {
     textAlign: "center",
     padding: "10px"
 }
+
+
 export default Index;

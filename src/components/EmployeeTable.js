@@ -4,14 +4,15 @@ function EmployeeTable({employee, sortRequest}) {
 
     return (
         <>
+        <div>
             <table >
-                <thead>
+                <thead style={thStyle} >
                     <tr>
-                        <th>Images</th>
-                        <th><button type="button" onClick={() => sortRequest('name')}>Name</button></th>
-                        <th>Email</th>
-                        <th>phoneNumber</th>
-                        <th><button type="button" onClick={() => sortRequest('age')}>Age</button></th>
+                        <th style={{width:"5%", textAlign:"center", fontSize:"20px"}}>Images</th>
+                        <th style={{width:"15%", textAlign:"center", fontSize:"20px"}}><div type="div" onClick={() => sortRequest('name')}>Name</div></th>
+                        <th style={{width:"20%", textAlign:"center",fontSize:"20px"}}><div type="div" onClick={() => sortRequest('email')}>Email</div></th>
+                        <th style={{width:"20%", textAlign:"center",fontSize:"20px"}}> <div type="div" onClick={() => sortRequest('phone')}>PhoneNumber</div></th>
+                        <th style={{width:"10%", textAlign:"center",fontSize:"20px"}}><div type="div" onClick={() => sortRequest('age')}>Age</div></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,9 +28,13 @@ function EmployeeTable({employee, sortRequest}) {
 
                 </tbody>
             </table>
+            </div>
         </>
     )
 }
 
+const thStyle = {
+    borderBottom: "5px solid #FFF"
+}
 
 export default EmployeeTable;

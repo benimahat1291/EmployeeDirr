@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 
-function SearchArea({search, searchUpdate}) {
+function SearchArea({search, setSearch}) {
 
     return (
         <>
         <div style={searchStyle}>
         <form >
-            <input type="text" placeholder="Name" value={search} onChange={searchUpdate}></input>
+            <input type="text" placeholder="Name" value={search} onChange={(e) => setSearch(e.target.value)}></input>
         </form>
         </div>
         </>
@@ -14,9 +14,11 @@ function SearchArea({search, searchUpdate}) {
 }
 
 const searchStyle = {
-    padding: "5px",
-    paddingBottom: "30px",
-    float: "right",
+  
+    paddingLeft: "80%",
+    background: "#333333",
+    paddingTop: "5px",
+    paddingBottom: "10px"
     
 }
 
