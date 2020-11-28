@@ -1,5 +1,5 @@
 import React from 'react'
-
+//static component
 function NavBar() {
     return (
         <div style={navStyle}>

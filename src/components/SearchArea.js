@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 function SearchArea({search, setSearch}) {
-
+//has an onChange handler that calls the setSearch to set the serach state to user input
     return (
         <>
         <div style={searchStyle}>

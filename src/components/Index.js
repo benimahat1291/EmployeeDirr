@@ -6,14 +6,14 @@ import {getUsers} from "../utils/API"
 
 
 function Index() {
-
+//Our states
     const [employee, setEmployee] = useState([])
     const [sortConfigs, setsortConfigs] = useState({})
     const [search, setSearch] = useState("")
 
 
 
-
+//Activates the Api call and stores the employee information to state
     useEffect(() => {
         getUsers().then( resp => {
             let employeeDataArry= []
@@ -33,12 +33,12 @@ function Index() {
         })
         
     }, [])
-
+//takes in our employee data and filters by the search state which is whatever is search value
     function searchFilter(data){
         return data.filter((emp) => emp.name.toLowerCase().indexOf(search) !== -1)
     }
 
-
+// functions asigns a state value for asc and dsc to toggle sort, takes in key which is feild name
     const sortRequest = key => {
         let direction = 'asc'
         if (sortConfigs.key === key && sortConfigs.direction === 'asc') {
@@ -47,7 +47,7 @@ function Index() {
         
         setsortConfigs({key, direction})
     }
-
+// if current sortstate is asc cange to dsc
     if(sortConfigs !== {}) {
         employee.sort((a,b) => {
             if (a[sortConfigs.key] < b[sortConfigs.key]){
@@ -60,7 +60,8 @@ function Index() {
         })
     }
    
-
+//render our components passing required information
+//employee data is run though the search filter
     return (
         <>
             <div className ="container">

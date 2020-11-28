@@ -1,5 +1,6 @@
 import React from 'react';
-
+//import employee to render data to table
+// sort request for sorting feild
 function EmployeeTable({employee, sortRequest}) {
 
     return (
@@ -7,6 +8,7 @@ function EmployeeTable({employee, sortRequest}) {
         <div>
             <table >
                 <thead style={thStyle} >
+                    {/* Onclick tells sortRequest what feild to sort by */}
                     <tr>
                         <th style={{width:"5%", textAlign:"center", fontSize:"20px"}}>Images</th>
                         <th style={{width:"15%", textAlign:"center", fontSize:"20px"}}><div type="div" onClick={() => sortRequest('name')}>Name</div></th>
