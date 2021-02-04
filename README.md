@@ -18,7 +18,7 @@ An employee Directory that lists employee information and can sort data by feild
 
 ## Links
 
-[See the Deployed Application](https://benimahat1291.github.io/HW14---EmployeeDirr/)
+[See the Deployed Application](https://benimahat1291.github.io/EmployeeDirr/)
 
 ## Screenshots
 
